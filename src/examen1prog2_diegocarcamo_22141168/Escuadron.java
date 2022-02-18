@@ -68,6 +68,21 @@ public class Escuadron {
     public ArrayList<Persona> getMiembros() {
         return Miembros;
     }
+    public int SumaPoder(){
+        int suma=0;
+        
+        for(Persona p :Miembros){
+            suma+=p.getSumaPoder();
+        
+        
+        }
+        
+        return suma;
+        
+    
+    
+    
+    }
     
     
     

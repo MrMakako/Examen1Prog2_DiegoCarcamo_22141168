@@ -18,7 +18,7 @@ public class Main {
        //Iniciar Examen
        
        
-       
+       Admin cd= new Admin();
        
         
         

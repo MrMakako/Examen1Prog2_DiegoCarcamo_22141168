@@ -16,6 +16,8 @@ public class Universo {
     private String nombre;
     
     ArrayList<Escuadron>Escuadrones;
+    
+   
 
     public Universo(String nombre) {
         Escuadrones=new ArrayList<>();

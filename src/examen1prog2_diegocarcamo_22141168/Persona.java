@@ -14,7 +14,43 @@ public class Persona {
     
     private int Fuerza,Habilidad_Mental, Habiliad_Fisica;
     
-    boolean Tiene_Escuadron;
+    private boolean Tiene_Escuadron;
+    
+    private String Escuadron;
+    
+     private String Universo;
+
+    public String getUniverso() {
+        return Universo;
+    }
+     
+    public String getEscuadron() {
+        return Escuadron;
+    }
+
+    public void setEscuadron(String Escuadron) {
+        this.Escuadron = Escuadron;
+    }
+
+    public void setUniverso(String Universo) {
+        this.Universo = Universo;
+    }
+    public int  getSumaPoder(){
+        return Habiliad_Fisica+Habilidad_Mental+Fuerza;
+    
+    
+    
+    }
+    
+    public void Final_Chance(Persona p){
+    
+    
+    
+    }
+    
+    
+    
+    
             
     
     

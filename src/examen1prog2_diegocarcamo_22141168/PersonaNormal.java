@@ -11,7 +11,7 @@ package examen1prog2_diegocarcamo_22141168;
 public class PersonaNormal extends Persona{
 
     public PersonaNormal(String nombre,String debilad,String HeroeVilano) {
-        super(null, null, null);
+        super(nombre, debilad, HeroeVilano);
     }
     
     
