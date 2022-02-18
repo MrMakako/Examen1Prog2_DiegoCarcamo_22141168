@@ -84,6 +84,65 @@ public class Escuadron {
     
     }
     
+    public int  getSumaFuerza(){
+       int  suma =0;
+        for(Persona p: Miembros){
+            suma+=p.getFuerza();
+        
+           
+        
+        }
+        
+        
+        return suma;
+    
+    
+    
+    
+    
+    
+    }
+    
+    public int  getSumaHabilidad_Mental(){
+       int  suma =0;
+        for(Persona p: Miembros){
+            suma+=p.getHabilidad_Mental();
+        
+           
+        
+        }
+        
+        
+        return suma;
+    
+    
+    
+    
+    
+    
+    }
+    
+    public int  getSumaHabilidiad_Fisica(){
+       int  suma =0;
+        for(Persona p: Miembros){
+            suma+=p.getHabiliad_Fisica();
+        
+           
+        
+        }
+        
+        
+        return suma;
+    
+    
+    
+    
+    
+    
+    }
+    
+    
+    
     
     
     

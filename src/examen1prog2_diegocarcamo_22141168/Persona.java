@@ -70,7 +70,7 @@ public class Persona {
     
     public String toString(){
         return "Nombre: "+nombre+"--"+"debilidad:"+debilidad+"--"+"Es un :"+HeroreVillano+
-              "\nFuerza:"+Fuerza+"--"+"Habilidad Mental:" +Habilidad_Mental+"--Habilidad Fisica:"+Habiliad_Fisica ;
+              "\nFuerza:"+Fuerza+"--"+"Habilidad Mental:" +Habilidad_Mental+"--Habilidad Fisica:"+Habiliad_Fisica+"Universo: "+Universo ;
         
         
         

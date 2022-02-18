@@ -4,6 +4,7 @@
  */
 package examen1prog2_diegocarcamo_22141168;
 
+import com.sun.source.tree.ContinueTree;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -217,14 +218,32 @@ public class Admin {
             }
 
             case 4: {
+                if(EscuadronesMultiverso!=null){
+                    
+                        AsignarHeroeEscuadron();
+                        
+                
+                } 
 
-                AsignarHeroeEscuadron();
+            
                 break;
 
             }
             case 5: {
 
                 System.out.println("Simular Batalla");
+                 Escuadron Perdedor= ElejirDuelo();
+                 
+                 if(Perdedor!=null){
+                     System.out.println("Perdedores "+ Perdedor.getNombre());
+                     
+                     
+                     System.out.println("");
+                 
+                 
+                 }
+               break;
+                
 
             }
 
@@ -403,12 +422,52 @@ public class Admin {
             }
 
             Persona HeroeCreado = ElegirTipo(leerTxT("Tipo>>", ""), nombre, debilidad, Heroe_Villano);
+            AsignarAtributosHeroes(HeroeCreado);
 
         }
 
     }
     
-    public void ElejirDuelo(){
+    public Escuadron ElejirEscuadron(){
+        MostrarUniversos();
+        
+        Universo busqueda=BuscarUniverso(leerTxT("Nombre de universso>>",""));
+        
+        if(busqueda!=null){
+           busqueda.MostrarEscuadrones();
+           
+           Escuadron deseado= busqueda.BuscarEscuadron(leerTxT("Nombde del escuadron", ""));
+           if(deseado!=null){
+               return deseado;
+           
+           }
+        
+        
+        
+        
+        }
+        
+        return null;
+        
+        
+        
+    
+    
+    }
+    
+    public Escuadron ElejirDuelo(){
+        
+        
+        Escuadron e1= ElejirEscuadron();
+        Escuadron e2= ElejirEscuadron();
+        if(e1==null || e2==null){
+            System.out.println("Error");
+           return null;
+        
+        }
+        
+        
+        
         
         System.out.println("Elije un duelo\n"
                 + "1Fuerza\n"
@@ -423,20 +482,99 @@ public class Admin {
         switch (opcion) {
             
             case 1:{
+               
+                
+                return DueloFuerza(e1, e2);
+            
+               
+            }case 2:{
+                
+                return DueloHabiliad_Mental(e1, e2);
+            
+              
+            }case 3:{
+                
+                return DueloHabiliad_Fisica(e1, e2);
             
             
+                
             }
             
+            
+            
+            
         }
+        
+        return null;
  
     
     
     
     }
     
-    public void DueloFuerza(Escuadron e1,Escuadron e2){
+    public Escuadron DueloHabiliad_Fisica(Escuadron e1,Escuadron e2){
+        if(e1.getSumaHabilidiad_Fisica()>e2.getSumaHabilidiad_Fisica()){
+            System.out.println(e1.getNombre()+" Gano el duelo de Habiliad fisica");
+            return e2;
+        //Retorna  al perdedor
         
-        if(Es)
+        }else if(e1.getSumaHabilidiad_Fisica()<e2.getSumaHabilidiad_Fisica()){
+            return e1;
+        
+        }
+        
+        return null;
+        
+    
+    
+    
+    
+    }
+    
+    public Escuadron DueloHabiliad_Mental(Escuadron e1,Escuadron e2){
+        if(e1.getSumaHabilidad_Mental()>e2.getSumaHabilidad_Mental()){
+            System.out.println(e1.getNombre()+" Gano el duelo de Habiliad fisica");
+            return e2;
+        //Retorna  al perdedor
+        
+        }else if(e1.getSumaHabilidad_Mental()<e2.getSumaHabilidad_Mental()){
+            return e1;
+        
+        }
+        
+        return null;
+        
+    
+    
+    
+    
+    }
+    
+    
+    public Escuadron DueloFuerza(Escuadron e1,Escuadron e2){
+        
+        if(e1.getSumaFuerza()>e2.getSumaFuerza()){
+            System.out.println(e1.getNombre()+" Gano el duelo de fuerza");
+            return e2;
+        
+        
+        }else if (e1.getSumaFuerza()<e2.getSumaFuerza()){
+            
+            System.out.println(e2.getNombre()+" Gano el duelo de fuerza");
+            return e1;
+        }
+        
+        
+        
+        
+        return null;
+        
+        
+        
+        
+        
+        
+        
         
         
     
@@ -477,8 +615,13 @@ public class Admin {
                 MostrarHeroes();
                 String nombre = leerTxT("Nombre de super>>", "");
                 if (BuscarSuper(nombre) != null) {
-
+                    
                     add.getEscuadrones().get(i).AddMiembro(BuscarSuper(nombre));
+                    BuscarSuper(nombre).setEscuadron(add.getEscuadrones().get(i).getNombre());
+                    BuscarSuper(nombre).setUniverso(add.getNombre());
+                    //Setea el escuadron 
+                    
+                    
 
                     String R = leerTxT("Desea que sea el lider Y/N", "").toUpperCase();
 
@@ -503,6 +646,7 @@ public class Admin {
             case MUTANTE: {
 
                 return new Mutante(nombre, debilidad, HeroeVillano);
+                
 
             }
             case ALIEN: {
