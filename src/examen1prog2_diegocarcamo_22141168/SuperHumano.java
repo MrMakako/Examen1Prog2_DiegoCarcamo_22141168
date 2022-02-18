@@ -8,25 +8,19 @@ package examen1prog2_diegocarcamo_22141168;
  *
  * @author Diego Carcamo
  */
-public class Main {
+public class SuperHumano extends  Persona{
     
+    String SuperPoder;
+
+    public SuperHumano(String nombre,String debilad,String HeroeVilano) {
+        super(nombre, debilad, HeroeVilano);
+        
+        
     
-    public static void main(String[] args) {
-        
-        
-        
-       //Iniciar Examen
-       
-       
-       
-       
-        
-        
-        
-        
-        
-        
-        
     }
+    
+    
+    
+    
     
 }

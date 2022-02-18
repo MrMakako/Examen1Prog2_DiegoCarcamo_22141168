@@ -8,25 +8,18 @@ package examen1prog2_diegocarcamo_22141168;
  *
  * @author Diego Carcamo
  */
-public class Main {
-    
-    
-    public static void main(String[] args) {
-        
-        
-        
-       //Iniciar Examen
-       
-       
-       
-       
-        
-        
-        
-        
-        
-        
-        
+public class PersonaNormal extends Persona{
+
+    public PersonaNormal(String nombre,String debilad,String HeroeVilano) {
+        super(null, null, null);
     }
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

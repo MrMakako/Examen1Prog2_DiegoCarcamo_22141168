@@ -8,25 +8,14 @@ package examen1prog2_diegocarcamo_22141168;
  *
  * @author Diego Carcamo
  */
-public class Main {
+public class Deidad extends Extraterrestre{
     
-    
-    public static void main(String[] args) {
-        
-        
-        
-       //Iniciar Examen
-       
-       
-       
-       
-        
-        
-        
-        
-        
-        
-        
+    boolean Creyentes;
+
+    public Deidad(String nombre,String debilad,String HeroeVilano) {
+        super(nombre, debilad, HeroeVilano);
     }
+    
+    
     
 }

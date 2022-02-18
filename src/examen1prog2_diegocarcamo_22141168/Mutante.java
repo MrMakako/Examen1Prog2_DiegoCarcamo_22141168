@@ -8,25 +8,12 @@ package examen1prog2_diegocarcamo_22141168;
  *
  * @author Diego Carcamo
  */
-public class Main {
-    
-    
-    public static void main(String[] args) {
-        
-        
-        
-       //Iniciar Examen
-       
-       
-       
-       
-        
-        
-        
-        
-        
-        
-        
+public class Mutante extends Persona{
+
+    public Mutante(String nombre,String debilad,String HeroeVilano) {
+        super(nombre, debilad, HeroeVilano);
     }
+    
+    
     
 }
