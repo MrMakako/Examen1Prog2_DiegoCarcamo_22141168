@@ -21,6 +21,7 @@ public class PorAccidenteRadioActivo extends Persona{
         
         
         
+        
     }
 
     public void setTipoAccidente(String tipoAccidente) {

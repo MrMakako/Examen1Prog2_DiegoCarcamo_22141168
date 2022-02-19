@@ -41,6 +41,30 @@ public class SuperHumano extends  Persona{
             
             }
         }
+        i =i+1;
+        
+         switch (i) {
+            
+            case 0:{
+                setFuerza(getFuerza()/2);
+                break;
+            }case 1:{
+                setHabiliad_Fisica(getHabiliad_Fisica()+(getHabiliad_Fisica()*4));
+                
+            
+            }case 3:{
+                setHabilidad_Mental(getHabilidad_Mental()+(getHabilidad_Mental()*4));
+                break;
+            
+            
+            }case 4:{
+                
+                setHabilidad_Mental(getHabilidad_Mental()+(getHabilidad_Mental()*4));
+                break;
+            
+            
+            }
+        }
         
     
     

@@ -102,6 +102,9 @@ public class Escuadron {
     
     
     }
+    
+    
+    
 
     public Persona MiembroDebil() {
         Persona debil= Miembros.get(0);

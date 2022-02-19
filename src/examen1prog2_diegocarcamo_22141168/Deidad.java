@@ -16,6 +16,26 @@ public class Deidad extends Extraterrestre{
         super(nombre, debilad, HeroeVilano);
     }
     
+    public void  Final_Chance(Persona p ){
+        this.setFuerza((int) (getFuerza()+(getFuerza()*4)));
+        this.setHabiliad_Fisica((int) (this.getHabiliad_Fisica()+(getHabiliad_Fisica()*4)));
+        this.setHabilidad_Mental((int)(this.getHabilidad_Mental()+(this.getHabilidad_Mental()*4)));
+        
+        
+        p.setFuerza((int) (getFuerza()/2));
+        p.setHabiliad_Fisica((int) (p.getHabiliad_Fisica()+(getHabiliad_Fisica()/2)));
+        p.setHabilidad_Mental((int)(p.getHabilidad_Mental()/2));
+        
+        
+        
+    
+    
+    
+    }
+    
+    
+    
+    
     
     
 }

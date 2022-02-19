@@ -6,6 +6,8 @@ package examen1prog2_diegocarcamo_22141168;
 
 import com.sun.source.tree.ContinueTree;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,10 +24,12 @@ public class Admin {
     ArrayList<Escuadron> EscuadronesMultiverso = new ArrayList<>();
 
     Scanner sc = new Scanner(System.in);
+    
+    Escuadron Ganador;
 
     public Admin() {
         Universos = new ArrayList<>();
-
+        Ganador=null;
         SuperHeroes = new ArrayList<>();
 
         CrearUniverso();
@@ -37,6 +41,12 @@ public class Admin {
         }
 
     }
+
+    public void setGanador(Persona Ganador) {
+        this.Ganador = Ganador;
+    }
+    
+    
     
     public void ListarVillanos(){
         
@@ -65,7 +75,7 @@ public class Admin {
     }
     
     public void ListarHeroes(){
-        
+            
            for(Persona p :SuperHeroes){
         
             if(p.getHeroreVillano().toUpperCase().equals("HEROES")){
@@ -287,7 +297,19 @@ public class Admin {
                  Escuadron Perdedor= ElejirDuelo();
                  
                  if(Perdedor!=null){
+                     
                      System.out.println("Perdedores "+ Perdedor.getNombre());
+                     System.out.println("Ultima Oprtunidad");
+                     
+                     Perdedor.getLider().Final_Chance(Ganador.getLider());
+                     LastChane(Perdedor,Ganador);
+                     
+                     
+                     
+                     
+                     
+                     
+                     
                      
                      
                      
@@ -590,6 +612,74 @@ public class Admin {
     
     }
     
+    
+    public ArrayList<String> Ordenamiento(ArrayList<Persona> p){
+        ArrayList<String> nombres= new ArrayList<>();
+        for(int i =0;i<p.size();i++){
+           nombres.add(p.get(i).toString());
+           
+           
+           
+        
+        
+        }
+        
+        Collections.sort(nombres);
+        
+        return nombres;
+       
+        
+        
+        
+    
+    
+    
+    }
+    
+    public void LastChane(Escuadron perdedor,Escuadron Ganador){
+        
+        
+          Random r= new Random();
+        int opcion = r.nextInt(2)+1;
+        
+        
+        
+        switch (opcion) {
+            
+            case 1:{
+                System.out.println("Fuerza");
+               
+                
+                DueloFuerza(perdedor, Ganador);
+            
+               
+            }case 2:{
+                System.out.println("Duelo de habiliad mental ");
+                
+                DueloHabiliad_Mental(perdedor, Ganador);
+            
+              
+            }case 3:{
+                System.out.println("duelo de edestreza fisica");
+               DueloHabiliad_Fisica(perdedor, Ganador);
+            
+            
+                
+            }
+            
+            
+            
+            
+        }
+        
+        
+        
+       
+    
+    
+    
+    }
+    
     public Escuadron ElejirDuelo(){
         
         
@@ -647,10 +737,12 @@ public class Admin {
     public Escuadron DueloHabiliad_Fisica(Escuadron e1,Escuadron e2){
         if(e1.getLider().getHabiliad_Fisica()>e2.getLider().getHabiliad_Fisica()){
             System.out.println(e1.getNombre()+" Gano el duelo de Habiliad fisica");
+            setGanador(e1.getLider());
             return e2;
         //Retorna  al perdedor
         
         }else if(e1.getLider().getHabiliad_Fisica()<e2.getLider().getHabiliad_Fisica()){
+            setGanador(e2.getLider());
             return e1;
         
         }
@@ -666,10 +758,13 @@ public class Admin {
     public Escuadron DueloHabiliad_Mental(Escuadron e1,Escuadron e2){
         if(e1.getLider().getHabilidad_Mental()>e2.getLider().getHabilidad_Mental()){
             System.out.println(e1.getNombre()+" Gano el duelo de Habiliad fisica");
+            setGanador(e1.getLider());
             return e2;
+            
         //Retorna  al perdedor
         
         }else if(e1.getLider().getHabilidad_Mental()<e2.getLider().getHabilidad_Mental()){
+            setGanador(e2.getLider());
             
             return e1;
         
@@ -688,10 +783,12 @@ public class Admin {
         
         if(e1.getSumaFuerza()>e2.getSumaFuerza()){
             System.out.println(e1.getNombre()+" Gano el duelo de fuerza");
+            setGanador(e1.getLider());
             return e2;
         
         
         }else if (e1.getSumaFuerza()<e2.getSumaFuerza()){
+            setGanador(e2.getLider());
             
             System.out.println(e2.getNombre()+" Gano el duelo de fuerza");
             return e1;
@@ -722,9 +819,10 @@ public class Admin {
 
     public void MostrarHeroes() {
         System.out.println("Heroes");
+        
 
-        for (Persona p : SuperHeroes) {
-            System.out.println(p);
+        for (String s : Ordenamiento(SuperHeroes)) {
+            System.out.println(s);
             System.out.println();
 
         }
