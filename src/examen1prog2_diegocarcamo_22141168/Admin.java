@@ -42,7 +42,7 @@ public class Admin {
 
     }
 
-    public void setGanador(Persona Ganador) {
+    public void setGanador(Escuadron Ganador) {
         this.Ganador = Ganador;
     }
     
@@ -737,12 +737,12 @@ public class Admin {
     public Escuadron DueloHabiliad_Fisica(Escuadron e1,Escuadron e2){
         if(e1.getLider().getHabiliad_Fisica()>e2.getLider().getHabiliad_Fisica()){
             System.out.println(e1.getNombre()+" Gano el duelo de Habiliad fisica");
-            setGanador(e1.getLider());
+            setGanador(e1);
             return e2;
         //Retorna  al perdedor
         
         }else if(e1.getLider().getHabiliad_Fisica()<e2.getLider().getHabiliad_Fisica()){
-            setGanador(e2.getLider());
+            setGanador(e2);
             return e1;
         
         }
@@ -758,13 +758,13 @@ public class Admin {
     public Escuadron DueloHabiliad_Mental(Escuadron e1,Escuadron e2){
         if(e1.getLider().getHabilidad_Mental()>e2.getLider().getHabilidad_Mental()){
             System.out.println(e1.getNombre()+" Gano el duelo de Habiliad fisica");
-            setGanador(e1.getLider());
+            setGanador(e1);
             return e2;
             
         //Retorna  al perdedor
         
         }else if(e1.getLider().getHabilidad_Mental()<e2.getLider().getHabilidad_Mental()){
-            setGanador(e2.getLider());
+            setGanador(e2);
             
             return e1;
         
@@ -783,12 +783,12 @@ public class Admin {
         
         if(e1.getSumaFuerza()>e2.getSumaFuerza()){
             System.out.println(e1.getNombre()+" Gano el duelo de fuerza");
-            setGanador(e1.getLider());
+            setGanador(e1);
             return e2;
         
         
         }else if (e1.getSumaFuerza()<e2.getSumaFuerza()){
-            setGanador(e2.getLider());
+            setGanador(e2);
             
             System.out.println(e2.getNombre()+" Gano el duelo de fuerza");
             return e1;
