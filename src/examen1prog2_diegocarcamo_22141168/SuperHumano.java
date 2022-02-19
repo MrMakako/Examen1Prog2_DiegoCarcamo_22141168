@@ -4,6 +4,8 @@
  */
 package examen1prog2_diegocarcamo_22141168;
 
+import java.util.Random;
+
 /**
  *
  * @author Diego Carcamo
@@ -16,6 +18,32 @@ public class SuperHumano extends  Persona{
         super(nombre, debilad, HeroeVilano);
         
         
+    
+    }
+    
+    public void Final_Chance(){
+         Random r= new Random();
+       
+        int i = r.nextInt(3);
+        switch (i) {
+            
+            case 0:{
+                setFuerza(((int)getFuerza()+(getFuerza()*4)));
+                break;
+            }case 1:{
+                setHabiliad_Fisica(getHabiliad_Fisica()+(getHabiliad_Fisica()*4));
+                
+            
+            }case 3:{
+                setHabilidad_Mental(getHabilidad_Mental()+(getHabilidad_Mental()*4));
+                break;
+            
+            
+            }
+        }
+        
+    
+    
     
     }
     

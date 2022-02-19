@@ -13,7 +13,7 @@ public class Mutante extends Persona{
     public Mutante(String nombre,String debilad,String HeroeVilano) {
         super(nombre, debilad, HeroeVilano);
     }
-    
+    publ
     
     
 }

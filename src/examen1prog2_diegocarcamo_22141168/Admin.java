@@ -6,6 +6,7 @@ package examen1prog2_diegocarcamo_22141168;
 
 import com.sun.source.tree.ContinueTree;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -35,6 +36,57 @@ public class Admin {
 
         }
 
+    }
+    
+    public void ListarVillanos(){
+        
+        
+        
+        
+        for(Persona p :SuperHeroes){
+        
+            if(p.getHeroreVillano().toUpperCase().equals("VILLANO")){
+                System.out.println(p);
+                System.out.println();
+            
+            
+            }
+                
+                
+        
+        
+        }
+        
+    
+    
+    
+    
+    
+    }
+    
+    public void ListarHeroes(){
+        
+           for(Persona p :SuperHeroes){
+        
+            if(p.getHeroreVillano().toUpperCase().equals("HEROES")){
+                System.out.println(p);
+                System.out.println();
+            
+            
+            }
+                
+                
+        
+        
+        }
+        
+    
+    
+    
+    
+    
+    
+    
     }
 
     public String leerTxT(String msg, String Error) {
@@ -238,8 +290,10 @@ public class Admin {
                      System.out.println("Perdedores "+ Perdedor.getNombre());
                      
                      
-                     System.out.println("");
+                     
                  
+                 }else{
+                     System.out.println("Empate o ubo un error");
                  
                  }
                break;
@@ -259,7 +313,12 @@ public class Admin {
 
                 System.out.println("Crear Supers");
 
-                CrearSuper();
+                Persona creado=CrearSuper();
+                
+                if(creado==null){
+                    SuperHeroes.remove(creado);
+                
+                }
 
                 break;
 
@@ -267,6 +326,8 @@ public class Admin {
             case 2: {
 
                 System.out.println("Modificar");
+                
+                EditarPersona();
 
                 break;
             }
@@ -276,6 +337,26 @@ public class Admin {
                 EliminarHeroe();
 
                 break;
+            }
+            case 4:{
+                
+                System.out.println("Listar Heoroes o villanos? V o H");
+                
+                String r= leerTxT("Inserte H o V>>>","");
+                
+                if(r.toUpperCase().equals("V")){
+                
+                    ListarVillanos();
+                    
+                }else{
+                
+                    ListarHeroes();
+                
+                }
+                
+                break;
+               
+            
             }
 
         }
@@ -376,10 +457,41 @@ public class Admin {
 
         System.out.println("No cumplio");
         return false;
+        
+        
 
     }
+    
+    
+    
+    
+    public void EditarPersona(){
+        
+        MostrarHeroes();
+        
+        
+       Persona Editar= BuscarSuper(leerTxT("Nombre de super", ""));
+       
+       
+       if(Editar !=null){
+           
+           System.out.println(Editar);
+           Editar=AsignarAtributosHeroes(Editar);
+           
+           
+       
+           
+       
+       
+       }
+        
+        
+    
+    
+    
+    }
 
-    public void AsignarAtributosHeroes(Persona p) {
+    public Persona AsignarAtributosHeroes(Persona p) {
 
         p.setFuerza(leerInt("Fuerza>>", "Solo enteros"));
         p.setHabiliad_Fisica(leerInt("Habilidad Fisica>>", ""));
@@ -400,11 +512,20 @@ public class Admin {
             ((PorAccidenteRadioActivo) p).setEdad_en_Accidente(leerInt("Edad qeu tenia cuando ocurrio el acciidente>>", "Error solo enteros"));
             ((PorAccidenteRadioActivo) p).setTipoAccidente(leerTxT("Tipo de Accidente>>", ""));
         }
+        
+        
+        if(PudeSerSuper(p)){
+            return p;
+        }
+        else{
+        
+            return null;
+        }
 
         //Atributos extra
     }
 
-    public void CrearSuper() {
+    public Persona CrearSuper() {
 
         String nombre = leerTxT("Nombre de Super:", "");
 
@@ -412,7 +533,19 @@ public class Admin {
 
         String debilidad = leerTxT("Debilidad:", "");
 
-        String Heroe_Villano = leerTxT("Es heroes o villano>>>", "");
+         String R=leerTxT("Es un heroe colocar (v) o villano colocar (v)", "");
+         
+         String Heroe_Villano;
+         
+         if(R.toUpperCase().equals("V")){
+             Heroe_Villano="VILLANO";
+             
+            
+         
+         }else{
+             Heroe_Villano="HEROE";
+         }
+         
 
         if (BuscarSuper(nombre) == null) {
 
@@ -422,9 +555,11 @@ public class Admin {
             }
 
             Persona HeroeCreado = ElegirTipo(leerTxT("Tipo>>", ""), nombre, debilidad, Heroe_Villano);
-            AsignarAtributosHeroes(HeroeCreado);
+            return AsignarAtributosHeroes(HeroeCreado);
 
         }
+        
+        return null;
 
     }
     
@@ -469,31 +604,28 @@ public class Admin {
         
         
         
-        System.out.println("Elije un duelo\n"
-                + "1Fuerza\n"
-                + "2.Duelo de Habiliad Mental\n"
-                + "3.Duelo de habilidad fisica");
-        
-        
-        int opcion = leerInt("Opcion>>", "solo enterps");
+        Random r= new Random();
+        int opcion = r.nextInt(2)+1;
         
         
         
         switch (opcion) {
             
             case 1:{
+                System.out.println("Fuerza");
                
                 
                 return DueloFuerza(e1, e2);
             
                
             }case 2:{
+                System.out.println("Duelo de habiliad mental ");
                 
                 return DueloHabiliad_Mental(e1, e2);
             
               
             }case 3:{
-                
+                System.out.println("duelo de edestreza fisica");
                 return DueloHabiliad_Fisica(e1, e2);
             
             
@@ -513,12 +645,12 @@ public class Admin {
     }
     
     public Escuadron DueloHabiliad_Fisica(Escuadron e1,Escuadron e2){
-        if(e1.getSumaHabilidiad_Fisica()>e2.getSumaHabilidiad_Fisica()){
+        if(e1.getLider().getHabiliad_Fisica()>e2.getLider().getHabiliad_Fisica()){
             System.out.println(e1.getNombre()+" Gano el duelo de Habiliad fisica");
             return e2;
         //Retorna  al perdedor
         
-        }else if(e1.getSumaHabilidiad_Fisica()<e2.getSumaHabilidiad_Fisica()){
+        }else if(e1.getLider().getHabiliad_Fisica()<e2.getLider().getHabiliad_Fisica()){
             return e1;
         
         }
@@ -532,12 +664,13 @@ public class Admin {
     }
     
     public Escuadron DueloHabiliad_Mental(Escuadron e1,Escuadron e2){
-        if(e1.getSumaHabilidad_Mental()>e2.getSumaHabilidad_Mental()){
+        if(e1.getLider().getHabilidad_Mental()>e2.getLider().getHabilidad_Mental()){
             System.out.println(e1.getNombre()+" Gano el duelo de Habiliad fisica");
             return e2;
         //Retorna  al perdedor
         
-        }else if(e1.getSumaHabilidad_Mental()<e2.getSumaHabilidad_Mental()){
+        }else if(e1.getLider().getHabilidad_Mental()<e2.getLider().getHabilidad_Mental()){
+            
             return e1;
         
         }

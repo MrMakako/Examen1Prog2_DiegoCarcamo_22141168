@@ -89,11 +89,7 @@ public class Persona {
     
     
     //polifmorfico
-    public void Find_Chance(){
-    
-    
-    
-    }
+
     //GETTERS
     public String getNombre() {
         return nombre;
@@ -155,7 +151,7 @@ public class Persona {
     public void setHabiliad_Fisica(int Habiliad_Fisica) {
         this.Habiliad_Fisica = Habiliad_Fisica;
     }
-    
+
    
     
     

@@ -102,6 +102,30 @@ public class Escuadron {
     
     
     }
+
+    public Persona MiembroDebil() {
+        Persona debil= Miembros.get(0);
+        
+        Persona n;
+        for(Persona p : Miembros){
+            if(p.getSumaPoder()<debil.getSumaPoder()){
+                debil=p;
+            }
+           
+        
+        
+        }
+        
+        return debil;
+        
+        
+        
+        
+        
+    }
+    
+    
+    
     
     public int  getSumaHabilidad_Mental(){
        int  suma =0;

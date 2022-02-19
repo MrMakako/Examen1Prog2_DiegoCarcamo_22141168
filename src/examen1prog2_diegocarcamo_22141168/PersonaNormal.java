@@ -13,6 +13,23 @@ public class PersonaNormal extends Persona{
     public PersonaNormal(String nombre,String debilad,String HeroeVilano) {
         super(nombre, debilad, HeroeVilano);
     }
+    public void Final_Chance(Persona p){
+        
+        this.setFuerza((int) (getFuerza()+(getFuerza()*0.5)));
+        this.setHabiliad_Fisica((int) (this.getHabiliad_Fisica()+(getHabiliad_Fisica()*0.05)));
+        this.setHabilidad_Mental((int)(this.getHabilidad_Mental()+(this.getHabilidad_Mental()*0.05)));
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    }
+    
+    
     
     
     
